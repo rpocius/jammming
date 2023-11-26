@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
+import "./SearchBar.css";
 
 export default function SearchBar() {
     const [term, setTerm] = useState('');
@@ -18,8 +19,6 @@ export default function SearchBar() {
                 onChange={handleChange}
             />
             <button onClick={() => setTerm} >Search</button>
-            <br />
-            <p>Your search (temp): {term}</p>
         </div>
     )
 };
