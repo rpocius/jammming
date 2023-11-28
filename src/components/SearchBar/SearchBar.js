@@ -10,7 +10,7 @@ export default function SearchBar() {
     }
 
     return (
-        <div className='searchbar'>
+        <div className="SearchBar">
             <input 
                 type='text'  
                 name='search'
@@ -18,7 +18,7 @@ export default function SearchBar() {
                 value={term}
                 onChange={handleChange}
             />
-            <button onClick={() => setTerm} >Search</button>
+            <button onClick={() => setTerm} >SEARCH</button>
         </div>
     )
 };

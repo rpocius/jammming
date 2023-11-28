@@ -76,7 +76,7 @@ function updatePlaylistName(name) {
       </h1>
       <div className="App">
         <SearchBar />
-        <div className="App-playList">
+        <div className="App-playlist">
           <SearchResults
             searchResults={searchResults}
             onAdd={addTrack}
