@@ -3,15 +3,15 @@ import "./Track.css";
 
 export default function Track(props) {
 
-  /*  addTrack(event) {
-        props.onAdd(props.track);
-      }
+  function addTrack(props){
+    props.onAdd(props.track)
+  }
     
-      removeTrack(event) {
-        props.onRemove(props.track);
-      }
+  function removeTrack(props) {
+    props.onRemove(props.track);
+  }
     
-      renderAction() {
+  function renderAction() {
         if (props.isRemoval) {
           return (
             <a className="Track-action" onClick={removeTrack}>
@@ -25,7 +25,7 @@ export default function Track(props) {
             </a>
           );
         }
-      } */
+      }
 
     return (
         <div className="Track">
