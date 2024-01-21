@@ -35,7 +35,7 @@ export default function Track(props) {
               {props.track.artist} | {props.track.album}
             </p>
           </div>
-          <a className="Track-action">+</a>
+          {renderAction()}
         </div>
       );
 };

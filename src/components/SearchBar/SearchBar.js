@@ -5,8 +5,12 @@ export default function SearchBar() {
     const [term, setTerm] = useState('');
 
     function handleChange(e) {
-        //e.preventDefault();
+        e.preventDefault();
         setTerm(e.target.value);
+    }
+
+    function search(props) {
+        props.onSearch(term);
     }
 
     return (
