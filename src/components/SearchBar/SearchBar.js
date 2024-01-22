@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./SearchBar.css";
 
-export default function SearchBar() {
+export default function SearchBar(props) {
     const [term, setTerm] = useState('');
 
     function handleChange(e) {
@@ -9,9 +9,9 @@ export default function SearchBar() {
         setTerm(e.target.value);
     }
 
-    function search(props) {
+    /*function search() {
         props.onSearch(term);
-    }
+    }*/
 
     return (
         <div className="SearchBar">
@@ -22,7 +22,7 @@ export default function SearchBar() {
                 value={term}
                 onChange={handleChange}
             />
-            <button onClick={() => setTerm} >SEARCH</button>
+            <button onClick={() => props.onSearch(term)} >SEARCH</button>
         </div>
     )
 };

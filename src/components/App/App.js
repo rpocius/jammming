@@ -3,6 +3,7 @@ import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
+import Spotify from '../../util/Spotify';
 
 
 
@@ -67,15 +68,16 @@ function removeTrack(track) {
 
 function updatePlaylistName(name) {
   setPlaylistName(name);
-}
+};
 
 function savePlaylist() {
   const trackURIs = playlistTracks.map(track => track.uri);
-}
+};
 
 function search(term) {
-  console.log(term);
-}
+  Spotify.search(term).then((result) => setSearchResults(result));
+  //console.log(term);
+};
 
   return (
     <div>
