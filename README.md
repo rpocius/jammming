@@ -2,7 +2,7 @@
 
 ## Overview
 
-Jamm-ing is a music streaming application that allows users to search for tracks, create playlists, and save them to their Spotify account. This project was built using React for the frontend and integrates with the Spotify API for music data. 
+Jammming is a music streaming application that allows users to search for tracks, create playlists, and save them to their Spotify account. This project was built using React for the frontend and integrates with the Spotify API for music data.
 This app is one of the tasks in CodeCademy's full-stack web development path. It is built using Create React App in order to follow the learning guidelines.
 
 ## Features
