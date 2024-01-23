@@ -4,14 +4,10 @@ import "./SearchBar.css";
 export default function SearchBar(props) {
     const [term, setTerm] = useState('');
 
-    function handleChange(e) {
-        e.preventDefault();
-        setTerm(e.target.value);
+    function handleChange(event) {
+        event.preventDefault();
+        setTerm(event.target.value);
     }
-
-    /*function search() {
-        props.onSearch(term);
-    }*/
 
     return (
         <div className="SearchBar">

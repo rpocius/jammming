@@ -31,9 +31,11 @@ const Spotify = {
     })
       .then((response) => response.json())
       .then((jsonResponse) => {
-        if (!jsonResponse) {
-          console.error("Response error");
+        if (!jsonResponse || !jsonResponse.tracks || !jsonResponse.tracks.items) {
+          console.error("Invalid response format:", jsonResponse);
+          return [];
         }
+
         return jsonResponse.tracks.items.map((t) => ({
           id: t.id,
           name: t.name,
@@ -41,6 +43,10 @@ const Spotify = {
           album: t.album.name,
           uri: t.uri,
         }));
+      })
+      .catch((error) => {
+        console.error("Error during search:", error);
+        return [];
       });
   },
 

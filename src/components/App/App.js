@@ -9,62 +9,17 @@ import Spotify from '../../util/Spotify';
 
 function App() {
 
-const [searchResults, setSearchResults] = useState([
-  {
-    name: 'Track Name 1',
-    artist: 'Artist Name 1',
-    album: 'Album 1',
-    id: 1
-  }, 
-  {
-    name: 'Track Name 2',
-    artist: 'Artist Name 2',
-    album: 'Album 2',
-    id: 2
-  }, 
-  {
-    name: 'Track Name 3',
-    artist: 'Artist Name 3',
-    album: 'Album 3',
-    id: 3
-  }
-]);
+const [searchResults, setSearchResults] = useState([]);
 const [playlistName, setPlaylistName] = useState('New Playlist');
-const [playlistTracks, setPlaylistTracks] = useState([
-  {
-    name: 'Playlist Track Name 4',
-    artist: 'Artist Name 4',
-    album: 'Album 4',
-    id: 4
-  }, 
-  {
-    name: 'Playlist Track Name 5',
-    artist: 'Artist Name 5',
-    album: 'Album 5',
-    id: 5
-  }, 
-  {
-    name: 'Playlist Track Name 6',
-    artist: 'Artist Name 6',
-    album: 'Album 6',
-    id: 6
-  }
-]);
+const [playlistTracks, setPlaylistTracks] = useState([]);
 
 function addTrack(track) {
-  let currentTracks = playlistTracks;
-  if (!currentTracks.some(currentTracks => currentTracks.id === track.id)) {
-    currentTracks.push(track);
-    setPlaylistTracks(currentTracks);
+  setPlaylistTracks(prevTracks => [...prevTracks, track]);
 }
-};
 
 function removeTrack(track) {
-  let currentTracks = playlistTracks;
-  setPlaylistTracks(() => currentTracks.filter(
-      playListTrack => playListTrack.id !== track.id
-    ))
-  };
+  setPlaylistTracks(prevTracks => prevTracks.filter(playListTrack => playListTrack.id !== track.id));
+}
 
 function updatePlaylistName(name) {
   setPlaylistName(name);
@@ -72,12 +27,19 @@ function updatePlaylistName(name) {
 
 function savePlaylist() {
   const trackURIs = playlistTracks.map(track => track.uri);
-  const name = playlistName;
-  Spotify.savePlaylist(name, trackURIs).then(() => {
-    setPlaylistName = "New Playlist";
-    playlistTracks = [];
-  })
-};
+  let name = playlistName;
+
+  Spotify.savePlaylist(name, trackURIs)
+    .then(() => {
+      //console.log("Playlist saved successfully!");
+      setPlaylistName("New Playlist");
+      //console.log(playlistName);
+      setPlaylistTracks([]);
+    })
+    .catch(error => {
+      console.error("Error saving playlist:", error);
+    });
+}
 
 function search(term) {
   Spotify.search(term).then((result) => setSearchResults(result));
