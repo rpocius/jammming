@@ -6,11 +6,11 @@ export default function Track(props) {
   function addTrack() {
     props.onAdd(props.track);
   }
-    
+
   function removeTrack() {
     props.onRemove(props.track);
   }
-    
+
   function renderAction() {
     if (props.isRemoval) {
       return (
@@ -29,6 +29,9 @@ export default function Track(props) {
 
   return (
     <div className="Track">
+      <div className="img-div">
+        <img src={props.track.imgURL} alt={props.track.name} className="track-img" /> 
+      </div>
       <div className="Track-information">
         <h3>{props.track.name}</h3>
         <p>
