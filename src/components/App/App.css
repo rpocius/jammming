@@ -6,11 +6,12 @@ html,
 
 html {
   font-size: 18px;
+  background-color: #01212C;
 }
 
 h1 {
   padding: 0.77rem 0;
-  background-color: #010c3f;
+  background-color: #01212C;
   text-align: center;
   font-family: "Poppins", sans-serif;
   font-size: 1.88rem;
@@ -18,7 +19,7 @@ h1 {
 }
 
 h1 .highlight {
-  color: #6c41ec;
+  color: #006477;
 }
 
 h2 {
@@ -29,7 +30,7 @@ h2 {
 .App {
   height: 100%;
   padding: 0 17% 10% 17%;
-  background-image: url("https://uploads.codesandbox.io/uploads/user/7edac254-d746-46cc-9d29-fbfd1d4a91e6/GVHZ-background_photo_desktop.jpg");
+  background-image: url("https://images.unsplash.com/photo-1502989642968-94fbdc9eace4?q=80&w=3088&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
