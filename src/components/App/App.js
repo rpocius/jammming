@@ -18,7 +18,16 @@ function addTrack(track) {
 }
 
 function removeTrack(track) {
-  setPlaylistTracks(prevTracks => prevTracks.filter(playListTrack => playListTrack.id !== track.id));
+  setPlaylistTracks(prevTracks => {
+    const indexToRemove = prevTracks.findIndex(t => t.id === track.id);
+
+    if (indexToRemove !== -1) {
+      const newPlaylist = [...prevTracks.slice(0, indexToRemove), ...prevTracks.slice(indexToRemove + 1)];
+      return newPlaylist;
+    }
+
+    return prevTracks;
+  });
 }
 
 function updatePlaylistName(name) {
@@ -31,9 +40,7 @@ function savePlaylist() {
 
   Spotify.savePlaylist(name, trackURIs)
     .then(() => {
-      //console.log("Playlist saved successfully!");
       setPlaylistName("New Playlist");
-      //console.log(playlistName);
       setPlaylistTracks([]);
     })
     .catch(error => {
@@ -43,7 +50,6 @@ function savePlaylist() {
 
 function search(term) {
   Spotify.search(term).then((result) => setSearchResults(result));
-  //console.log(term);
 };
 
   return (
