@@ -20,6 +20,7 @@ export default function SearchBar(props) {
         placeholder="Search for music"
         value={term}
         onChange={handleChange}
+        autoFocus
       />
     </div>
   );

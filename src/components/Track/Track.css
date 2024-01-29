@@ -7,8 +7,11 @@
 .Track-action {
   cursor: pointer;
   padding: 0.5rem;
-  font-size: 1.05rem;
+  font-size: 1.6rem;
   transition: color 0.25s;
+  border: none;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .Track-action:hover {
@@ -21,7 +24,7 @@
   flex-direction: column;
   justify-content: center;
   height: 72px;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .Track-information h3 {
@@ -51,4 +54,13 @@
 .render-action-container {
   display: flex;
   align-items: center;
+}
+
+.play-pause {
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  border: none;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
 }

@@ -43,6 +43,7 @@ const Spotify = {
           album: t.album.name,
           uri: t.uri,
           imgURL: t.album.images[0].url,
+          previewURL: t.preview_url,
         }));
       })
       .catch((error) => {

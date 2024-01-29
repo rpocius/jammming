@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Track.css";
 
 export default function Track(props) {
@@ -14,23 +14,46 @@ export default function Track(props) {
   function renderAction() {
     if (props.isRemoval) {
       return (
-        <a className="Track-action" onClick={removeTrack}>
+        <button className="Track-action" onClick={removeTrack}>
           -
-        </a>
+        </button>
       );
     } else {
       return (
-        <a className="Track-action" onClick={addTrack}>
+        <button className="Track-action" onClick={addTrack}>
           +
-        </a>
+        </button>
       );
+    }
+  }
+
+  const audioElementRef = useRef(null);
+
+  function handleHover() {
+    if (props.track.previewURL) {
+      if (audioElementRef.current) {
+        audioElementRef.current.pause();
+      }
+
+      const audioElement = new Audio(props.track.previewURL);
+      audioElement.play().catch(error => {
+        console.error('Error playing audio:', error);
+      });
+
+      audioElementRef.current = audioElement;
+    }
+  }
+
+  function handleMouseLeave() {
+    if (audioElementRef.current) {
+      audioElementRef.current.pause();
     }
   }
 
   return (
     <div className="Track">
       <div className="img-div">
-        <img src={props.track.imgURL} alt={props.track.name} className="track-img" /> 
+        <img src={props.track.imgURL} alt={props.track.name} className="track-img" />
       </div>
       <div className="Track-information">
         <h3>{props.track.name}</h3>
@@ -38,6 +61,15 @@ export default function Track(props) {
           {props.track.artist} | {props.track.album}
         </p>
       </div>
+      {props.track.previewURL && (
+        <button
+          className="play-pause"
+          onMouseEnter={handleHover}
+          onMouseLeave={handleMouseLeave}
+        >
+          {'\u23EF'}
+        </button>
+      )}
       {renderAction()}
     </div>
   );

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
@@ -9,48 +9,50 @@ import Spotify from '../../util/Spotify';
 
 function App() {
 
-const [searchResults, setSearchResults] = useState([]);
-const [playlistName, setPlaylistName] = useState('New Playlist');
-const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [playlistName, setPlaylistName] = useState('New Playlist');
+  const [playlistTracks, setPlaylistTracks] = useState([]);
 
-function addTrack(track) {
-  setPlaylistTracks(prevTracks => [...prevTracks, track]);
-}
+  function addTrack(track) {
+    setPlaylistTracks(prevTracks => [...prevTracks, track]);
+  };
 
-function removeTrack(track) {
-  setPlaylistTracks(prevTracks => {
-    const indexToRemove = prevTracks.findIndex(t => t.id === track.id);
+  function removeTrack(track) {
+    setPlaylistTracks(prevTracks => {
+      const indexToRemove = prevTracks.findIndex(t => t.id === track.id);
 
-    if (indexToRemove !== -1) {
-      const newPlaylist = [...prevTracks.slice(0, indexToRemove), ...prevTracks.slice(indexToRemove + 1)];
-      return newPlaylist;
-    }
+      if (indexToRemove !== -1) {
+        const newPlaylist = [...prevTracks.slice(0, indexToRemove), ...prevTracks.slice(indexToRemove + 1)];
+        return newPlaylist;
+      }
 
-    return prevTracks;
-  });
-}
-
-function updatePlaylistName(name) {
-  setPlaylistName(name);
-};
-
-function savePlaylist() {
-  const trackURIs = playlistTracks.map(track => track.uri);
-  let name = playlistName;
-
-  Spotify.savePlaylist(name, trackURIs)
-    .then(() => {
-      setPlaylistName("New Playlist");
-      setPlaylistTracks([]);
-    })
-    .catch(error => {
-      console.error("Error saving playlist:", error);
+      return prevTracks;
     });
-}
+  };
 
-function search(term) {
-  Spotify.search(term).then((result) => setSearchResults(result));
-};
+  function updatePlaylistName(name) {
+    setPlaylistName(name);
+  };
+
+  function savePlaylist() {
+    const trackURIs = playlistTracks.map(track => track.uri);
+    let name = playlistName;
+
+    Spotify.savePlaylist(name, trackURIs)
+      .then(() => {
+        setPlaylistName("New Playlist");
+        setPlaylistTracks([]);
+      })
+      .catch(error => {
+        console.error("Error saving playlist:", error);
+      });
+  };
+
+  function search(term) {
+    Spotify.search(term).then((result) => setSearchResults(result));
+  };
+
+
 
   return (
     <div>
@@ -58,7 +60,7 @@ function search(term) {
         Ja<span className="highlight">mmm</span>ing
       </h1>
       <div className="App">
-        <SearchBar 
+        <SearchBar
           onSearch={search}
         />
         <div className="App-playlist">
