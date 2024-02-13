@@ -49,9 +49,7 @@ function App() {
   };
 
   function search(term) {
-    if (term !== "") {
     Spotify.search(term).then((result) => setSearchResults(result));
-    }
   };
 
 
