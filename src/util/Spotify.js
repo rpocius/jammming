@@ -1,5 +1,5 @@
 let accessToken = "";
-const clientID = "5f638aae2b8b48f2889b64b90f9051ef";
+const clientID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const redirectUrl = "https://jannning.netlify.app/";
 //const redirectUrl = "http://localhost:3000";
 
